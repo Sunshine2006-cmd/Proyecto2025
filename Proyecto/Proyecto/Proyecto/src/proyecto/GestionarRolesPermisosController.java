@@ -20,8 +20,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.sql.*;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.SelectionMode;
 
 /**
  * FXML Controller class
@@ -73,74 +75,50 @@ public class GestionarRolesPermisosController implements Initializable {
     }
     
     @FXML
-    private void crearRol(){
-        //declaracion de campos
-        String nombre = txt_nombre_rol.getText().trim();
-        String descripcion = txt_Descr_rol.getText().trim();
+    private void crearRol(ActionEvent event){
+        String nombre = txt_nombre_rol.getText();
+        String descripcion = txt_Descr_rol.getText();
         
-        if(nombre.isEmpty()|| nombre.length()<3 || nombre.length()> 50){
-            System.err.println("Llene los campos adecuadamente");
+        if(nombre.isEmpty()|| nombre.length()<3||nombre.length()>50){
+            System.out.println("Ingrese la información de acuerdo a los parametros");
             return;
         }
         
+        Rol nuevoRol = new Rol(nombre,descripcion);
+        
         try{
-            Connection conn = Conexion.getConexion();
-            //Instruccion sql a java
-                String sql = 
-                        """
-                        INSERT INTO rol(nombre,descripcion) VALUES(?,?)
-                        """;
-            PreparedStatement ps =conn.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setString(2,descripcion);
-            ps.executeUpdate();
-            
-            //Aviso de exito, limpiar fieldtexts
-            System.out.println("Rol creado exitosamente");
-            txt_Descr_rol.clear();
+            RolDAO.CrearRol(nuevoRol);
             txt_nombre_rol.clear();
-            
+            txt_Descr_rol.clear();
+            System.out.println("Rol guardado");
         }catch(SQLException ex){
-            ex.printStackTrace();
-            System.err.println("Error al crear el rol" + ex.getMessage());
-            
+            System.out.println("Ha ocurrido un error al guardar el rol");
         }
+        
     }
     
     
     @FXML
-    private void crearPermiso(){
-        //declaracion de campos
-        String nombre = txt_nom_Permiso.getText().trim();
-        String descripcion = txt_descr_Permiso.getText().trim();
+    private void crearPermiso(ActionEvent event){
+        String nombre = txt_nom_Permiso.getText();
+        String descripcion = txt_descr_Permiso.getText();
         
-        if(nombre.isEmpty()|| nombre.length()<3 || nombre.length()> 50){
-            System.err.println("Llene los campos adecuadamente");
+        if(nombre.isEmpty()|| nombre.length()<3||nombre.length()>50){
+            System.out.println("Ingrese la información de acuerdo a los parametros");
             return;
         }
         
+        Permiso nuevoPermiso = new Permiso(nombre,descripcion);
+        
         try{
-            Connection conn = Conexion.getConexion();
-            //Instruccion sql a java
-                String sql = 
-                        """
-                        INSERT INTO permiso(nombre,descripcion) VALUES(?,?)
-                        """;
-            PreparedStatement ps =conn.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setString(2,descripcion);
-            ps.executeUpdate();
-            
-            //Aviso de exito, limpiar fieldtexts
-            System.out.println("Permiso creado exitosamente");
+            PermisoDAO.CrearPermisos(nuevoPermiso);
             txt_nom_Permiso.clear();
             txt_descr_Permiso.clear();
-            
+            System.out.println("Permiso guardado");
         }catch(SQLException ex){
-            ex.printStackTrace();
-            System.err.println("Error al crear el permiso" + ex.getMessage());
-            
+            System.out.println("Ha ocurrido un error al guardar el rol");
         }
+        
     }
     
     @FXML
@@ -174,7 +152,8 @@ public class GestionarRolesPermisosController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mostrarRoles();
+        
+        
     }    
     
 }

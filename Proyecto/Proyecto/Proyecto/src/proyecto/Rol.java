@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto;
-import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,12 +14,10 @@ public class Rol {
     
     private String nombre;
     private String descripcion;
-    private ArrayList <String> permisos = new ArrayList<>();
 
-    public Rol(String nombre, String descripcion, ArrayList<String> Permisos) {
+    public Rol(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.permisos = Permisos;
     }
 
     public String getNombre() {
@@ -37,16 +35,10 @@ public class Rol {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
     
-    public void modificar(){
-        
-    }
-    public void crear(){
-        
-    }
-    public void eliminar(){
-        
-    }
+    
+    
     
     
     

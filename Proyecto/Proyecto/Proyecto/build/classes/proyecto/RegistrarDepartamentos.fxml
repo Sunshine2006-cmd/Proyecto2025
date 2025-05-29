@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.RegistrarDepartamentosController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="267.0" prefWidth="473.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="proyecto.RegistrarDepartamentosController">
+   <children>
+      <Pane prefHeight="299.0" prefWidth="503.0" style="-fx-background-color: #f9f1f1;">
+         <children>
+            <Ellipse fill="#f8e5da" layoutX="114.0" layoutY="173.0" radiusX="55.0" radiusY="17.0" stroke="#f8e5da" strokeType="INSIDE" />
+            <Ellipse fill="#f8e5da" layoutX="115.0" layoutY="88.0" radiusX="88.0" radiusY="17.0" stroke="#f8e5da" strokeType="INSIDE" />
+            <Text layoutX="43.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del Departamento">
+               <font>
+                  <Font name="Candara Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción ">
+               <font>
+                  <Font name="Candara Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_nom_dept" layoutX="24.0" layoutY="118.0" prefHeight="25.0" prefWidth="176.0" />
+            <TextField fx:id="txt_descr_dept" layoutX="24.0" layoutY="201.0" prefHeight="25.0" prefWidth="176.0" />
+            <Button fx:id="guardar" layoutX="226.0" layoutY="249.0" mnemonicParsing="false" text="OK" />
+            <Pane prefHeight="55.0" prefWidth="503.0" style="-fx-background-color: #f9f9f9;">
+               <children>
+                  <Text layoutX="91.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creación de Departamentos" wrappingWidth="340.0">
+                     <font>
+                        <Font name="Century Gothic Bold" size="23.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Ellipse fill="#f8e5da" layoutX="367.0" layoutY="89.0" radiusX="88.0" radiusY="17.0" stroke="#f8e5da" strokeType="INSIDE" />
+            <Text layoutX="307.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione los técnicos">
+               <font>
+                  <Font name="Candara Bold" size="12.0" />
+               </font>
+            </Text>
+            <ListView fx:id="lista_roles" layoutX="252.0" layoutY="122.0" prefHeight="114.0" prefWidth="228.0" />
+            <Button fx:id="regresar" layoutX="17.0" layoutY="262.0" mnemonicParsing="false" onAction="#back" text="Regresar" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
